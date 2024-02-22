@@ -36,7 +36,7 @@ jobs:
       uses: actions/upload-pages-artifact@v1.0.7
       with:
         # Path of the directory containing the static assets.
-        path: "./dist/aimi-bingo"
+        path: "./dist/aimi-bingo/bingo"
 
   deploy:
     # Add a dependency to the build job
