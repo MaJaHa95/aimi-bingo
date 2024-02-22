@@ -3,7 +3,9 @@
         [class.checked]="previewCell.cell.checked$ | async">
         <div class="preview-icon-container" style="flex-shrink: 0;">
             <div class="preview-icon">
-                <i [class]="previewCell.cell.tile.icon"></i>
+                <ng-container *ngIf="previewCell.cell.tile.icon as icon">
+                    <fa-icon [icon]="icon"></fa-icon>
+                </ng-container>
             </div>
         </div>
         <div style="flex-grow: 1;">

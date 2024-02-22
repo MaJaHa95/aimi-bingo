@@ -1,5 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { BehaviorSubject, Observable, Subject, fromEvent, map, merge, of, shareReplay, switchMap, takeUntil, withLatestFrom } from "rxjs";
 import { GameStateService, ICell } from "../../services/game-state.service";
 import { observeResizes } from "../../utilities/resize-observable";
@@ -8,7 +11,7 @@ import { observeResizes } from "../../utilities/resize-observable";
 @Component({
   selector: 'app-bingo-board',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './bingo-board.component.html',
   styleUrl: './bingo-board.component.scss'
 })
@@ -19,6 +22,7 @@ export class BingoBoardComponent implements OnDestroy {
 
   readonly isPreviewing$: Observable<boolean>;
   readonly hasBingo$: Observable<boolean>;
+  readonly centerCellIcon$: Observable<IconProp>;
 
   private readonly destroy$ = new Subject<void>();
   private readonly previewingCoordinateSubject = new BehaviorSubject<{ x: number, y: number } | null>(null);
@@ -29,6 +33,8 @@ export class BingoBoardComponent implements OnDestroy {
   constructor(private readonly gameState: GameStateService) {
     this.cells = this.gameState.getCells();
     this.hasBingo$ = gameState.hasBingo$;
+
+    this.centerCellIcon$ = this.hasBingo$.pipe(map(c => faStar));
 
     const rowCount = this.cells.length / this.columnCount;
 

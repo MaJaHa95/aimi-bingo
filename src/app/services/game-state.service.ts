@@ -1,8 +1,10 @@
 import { Injectable } from "@angular/core";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faBirthdayCake, faBreadSlice, faCampground, faCarAlt, faChild, faFootballBall, faGlobeAmericas, faGuitar, faHamburger, faHandPaper, faHandsHelping, faHouseUser, faLanguage, faMusic, faPaintBrush, faPaw, faPersonWalking, faPodcast, faRunning, faSeedling, faTree, faUserAstronaut, faUserGraduate, faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { BehaviorSubject, Observable, distinctUntilChanged, filter, map } from "rxjs";
 
 export interface IBingoTile {
-  icon: string;
+  icon: IconProp;
   title: string;
 }
 
@@ -26,30 +28,30 @@ export type ICell = IBingoCell | ITileCell;
 
 
 const tiles: IBingoTile[] = [
-  { icon: 'fas fa-language', title: 'Speaks 3+ languages' },
-  { icon: 'fas fa-globe-americas', title: 'Has traveled to more than 3 continents' },
-  { icon: 'fas fa-paint-brush', title: 'Likes to do art' },
-  { icon: 'fas fa-tree', title: 'Has visited a national park' },
-  { icon: 'fas fa-user-astronaut', title: 'Has met someone famous' },
-  { icon: 'fas fa-house-user', title: 'Has lived in a different region or country' },
-  { icon: 'fas fa-utensils', title: 'Enjoys cooking traditional dishes' },
-  { icon: 'fas fa-running', title: 'Has completed an endurance race' },
-  { icon: 'fas fa-hand-paper', title: 'Is left-handed' },
-  { icon: 'fas fa-music', title: 'Likes the same genre of music' },
-  { icon: 'fas fa-child', title: 'Has the same favorite childhood game / toy' },
-  { icon: 'fas fa-person-walking', title: 'Has taken a dance class' },
-  { icon: 'fas fa-campground', title: 'Has gone camping in the past year' },
-  { icon: 'fas fa-user-graduate', title: 'Is the oldest sibling' },
-  { icon: 'fas fa-podcast', title: 'Loves podcasts' },
-  { icon: 'fas fa-hands-helping', title: 'Is involved in a social cause' },
-  { icon: 'fas fa-guitar', title: 'Can play a musical instrument or sing' },
-  { icon: 'fas fa-birthday-cake', title: 'Shares the same birthday month' },
-  { icon: 'fas fa-bread-slice', title: 'Enjoys baking' },
-  { icon: 'fas fa-seedling', title: 'Enjoys gardening' },
-  { icon: 'fas fa-football-ball', title: 'Has the same favorite sport team' },
-  { icon: 'fas fa-paw', title: 'Has a pet' },
-  { icon: 'fas fa-hamburger', title: 'Has the same favorite food' },
-  { icon: 'fas fa-car-alt', title: 'Drives a hybrid car' }
+  { icon: faLanguage, title: 'Speaks 3+ languages' },
+  { icon: faGlobeAmericas, title: 'Has traveled to more than 3 continents' },
+  { icon: faPaintBrush, title: 'Likes to do art' },
+  { icon: faTree, title: 'Has visited a national park' },
+  { icon: faUserAstronaut, title: 'Has met someone famous' },
+  { icon: faHouseUser, title: 'Has lived in a different region or country' },
+  { icon: faUtensils, title: 'Enjoys cooking traditional dishes' },
+  { icon: faRunning, title: 'Has completed an endurance race' },
+  { icon: faHandPaper, title: 'Is left-handed' },
+  { icon: faMusic, title: 'Likes the same genre of music' },
+  { icon: faChild, title: 'Has the same favorite childhood game / toy' },
+  { icon: faPersonWalking, title: 'Has taken a dance class' },
+  { icon: faCampground, title: 'Has gone camping in the past year' },
+  { icon: faUserGraduate, title: 'Is the oldest sibling' },
+  { icon: faPodcast, title: 'Loves podcasts' },
+  { icon: faHandsHelping, title: 'Is involved in a social cause' },
+  { icon: faGuitar, title: 'Can play a musical instrument or sing' },
+  { icon: faBirthdayCake, title: 'Shares the same birthday month' },
+  { icon: faBreadSlice, title: 'Enjoys baking' },
+  { icon: faSeedling, title: 'Enjoys gardening' },
+  { icon: faFootballBall, title: 'Has the same favorite sport team' },
+  { icon: faPaw, title: 'Has a pet' },
+  { icon: faHamburger, title: 'Has the same favorite food' },
+  { icon: faCarAlt, title: 'Drives a hybrid car' }
 ];
 
 @Injectable({

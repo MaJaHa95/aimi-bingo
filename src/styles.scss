@@ -12,3 +12,41 @@ body {
     background-size: cover;
     background-attachment: fixed;
 }
+
+.header {
+    .preview-cell-header {
+        &.checked {
+            .preview-icon {
+                text-shadow: 0 0 60px rgba(0, 69, 132, 0.25);
+                svg {
+                    filter: drop-shadow(0 0 60px rgba(0, 69, 132, 0.25));
+                }
+            }
+        }
+
+        &:not(.checked) {
+            .preview-icon {
+                text-shadow: 0 0 60px rgba(80, 78, 74, 0.5);
+                svg {
+                    filter: drop-shadow(0 0 60px rgba(80, 78, 74, 0.5));
+                }
+            }
+        }
+    }
+}
+
+.bingo-cell {
+    &.center-cell {
+        text-shadow: 0 0 15px rgba(110, 110, 110, 0.5);
+        svg {
+            filter: drop-shadow(0 0 15px rgba(110, 110, 110, 0.5));
+        }
+    }
+
+    &:not(.center-cell) {
+        text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        svg {
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+        }
+    }
+}

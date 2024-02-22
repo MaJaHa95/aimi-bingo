@@ -9,7 +9,9 @@
         [class.center-cell]="cell.type === 'bingo'">
         <div class="bingo-cell-content">
             <div *ngIf="cell.type === 'tile'; else bingoCell" class="bingo-tile">
-                <i [class]="cell?.tile?.icon"></i>
+                <ng-container *ngIf="cell?.tile?.icon as icon">
+                    <fa-icon [icon]="icon"></fa-icon>
+                </ng-container>
             </div>
 
             <ng-template #bingoCell>
@@ -18,7 +20,9 @@
                 </ng-container>
 
                 <ng-template #notPreviewing>
-                    <i class="fa-star" [class]="(hasBingo$ | async) ? 'fas' : 'far'"></i>
+                    <ng-container *ngIf="centerCellIcon$ | async as icon">
+                        <fa-icon [icon]="icon"></fa-icon>
+                    </ng-container>
                 </ng-template>
             </ng-template>
         </div>

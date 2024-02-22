@@ -78,13 +78,11 @@
     &.center-cell {
         background: linear-gradient(to bottom right, #ffffff, #cccccc);
         color: #1a1a1a;
-        text-shadow: 0 0 15px rgba(110, 110, 110, 0.5);
     }
 
     &:not(.center-cell) {
         cursor: pointer;
         color: #e3e3e3;
-        text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     }
 
     &.checked {
