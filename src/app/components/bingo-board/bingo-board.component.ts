@@ -3,13 +3,12 @@ import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, fromEvent, map, merge, of, shareReplay, switchMap, takeUntil, withLatestFrom } from "rxjs";
 import { GameStateService, ICell } from "../../services/game-state.service";
 import { observeResizes } from "../../utilities/resize-observable";
-import { BingoCellComponent } from "../bingo-cell/bingo-cell.component";
 
 
 @Component({
   selector: 'app-bingo-board',
   standalone: true,
-  imports: [BingoCellComponent, CommonModule],
+  imports: [CommonModule],
   templateUrl: './bingo-board.component.html',
   styleUrl: './bingo-board.component.scss'
 })
