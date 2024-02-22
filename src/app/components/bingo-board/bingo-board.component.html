@@ -1,12 +1,12 @@
 <div class="bingo-container" (touchstart)="onTouchStart($event)" (mousedown)="onTouchStart($event)"
     (mouseup)="onTouchEnd()" (touchend)="onTouchEnd()" (touchmove)="onTouchMove($event)"
     (mousemove)="onTouchMove($event)" [style.--column-count]="columnCount" [style.--grid-gap]="gridGapPx + 'px'"
-    [class.has-bingo]="hasBingo$ | async"
-    #container>
+    [class.has-bingo]="hasBingo$ | async" #container>
 
     <div *ngFor="let cell of cells; let i = index" class="bingo-cell" [class.checked]="cell.checked$ | async"
         [class.preview]="cell.previewing$ | async" [class.magnify]="getShouldMagnifyObservable(cell) | async"
-        [style.--cell-index]="i" [style.--cell-row]="floor(i / columnCount)" [class.center-cell]="cell.type === 'bingo'">
+        [style.--cell-index]="i" [style.--cell-row]="floor(i / columnCount)"
+        [class.center-cell]="cell.type === 'bingo'">
         <div class="bingo-cell-content">
             <div *ngIf="cell.type === 'tile'; else bingoCell" class="bingo-tile">
                 <i [class]="cell?.tile?.icon"></i>
@@ -18,7 +18,7 @@
                 </ng-container>
 
                 <ng-template #notPreviewing>
-                    <i class="fas fa-star"></i>
+                    <i class="fa-star" [class]="(hasBingo$ | async) ? 'fas' : 'far'"></i>
                 </ng-template>
             </ng-template>
         </div>
