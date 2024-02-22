@@ -1,0 +1,37 @@
+<div class="header">
+    <ng-container *ngIf="previewTile$ | async as previewTile; else noPreviewTile">
+        <div class="preview-icon-container">
+            <div class="preview-icon">
+                <i [class]="previewTile.icon"></i>
+            </div>
+        </div>
+        <div style="flex-grow: 1;">
+            <div class="preview-content">
+                <h3 class="tile-title">
+                    {{ previewTile.title }}
+                </h3>
+                <div>
+                    <button class="select-button" type="button" (click)="toggleTile(previewTile)">That's me!</button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #noPreviewTile>
+        <h3 class="intro-title" style="flex-grow: 1;">
+            <ng-container *ngIf="hasBingo$ | async as hasBingo; else noBingo">
+                Bingo!
+            </ng-container>
+            <ng-template #noBingo>
+                Let's play!
+            </ng-template>
+        </h3>
+        <div class="preview-icon-container">
+            <div class="preview-icon">
+                <img src="/assets/aimi-logo.png" />
+            </div>
+        </div>
+    </ng-template>
+</div>
+
+<app-bingo-board></app-bingo-board>

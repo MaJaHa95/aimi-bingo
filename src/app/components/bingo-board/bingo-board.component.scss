@@ -1,0 +1,74 @@
+:ng-host {
+    --container-margin: 20px;
+    --cell-padding: 20px;
+}
+
+.bingo-container {
+    display: grid;
+    grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
+
+    gap: var(--grid-gap);
+    max-width: 600px;
+    margin: 20px auto;
+
+    width: 100%;
+    height: 100%;
+
+    .has-bingo {
+        background-color: yellow;
+    }
+}
+
+.bingo-cell {
+    width: 100%;
+    aspect-ratio: 1;
+
+    position: relative;
+
+    background-color: #f0f0f0;
+    border: 2px solid #333;
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        z-index 0s,
+        background-color 0.3s;
+
+    margin: auto;
+    text-align: center;
+
+    &.checked {
+        background-color: #b2d8b8;
+    }
+
+    &:not(.checked) {
+        &.preview {
+            background-color: #ffcccc;
+        }
+    }
+
+    &.magnify {
+        /* Scale up the cell */
+        transform: scale(1.5);
+        /* Raise the z-index so it's above other cells */
+        z-index: 10;
+    }
+
+    .bingo-cell-content {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        .bingo-tile {
+            font-size: 10vw;
+        }
+    }
+
+    img {
+        width: 15vw;
+        aspect-ratio: 1;
+    }
+}
