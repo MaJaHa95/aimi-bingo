@@ -13,6 +13,7 @@
 
     .intro-title {
         font-size: 35px;
+        text-shadow: 0 0 65px rgba(0, 0, 0, 0.5);
 
         margin-left: 20px;
     }
@@ -47,8 +48,8 @@
         height: 100%;
         font-size: 75px;
 
-        text-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
-        color: #ffffff;
+        text-shadow: 0 0 60px rgba(80, 78, 74, 0.5);
+        color: #584b45;
 
         .preview-icon {
             margin: 0;
