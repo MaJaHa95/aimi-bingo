@@ -3,13 +3,24 @@
     --cell-padding: 20px;
 }
 
-@keyframes wave-animation {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
+@keyframes intro-animation {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes bingo-animation {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
 }
 
 .bingo-container {
@@ -25,12 +36,18 @@
 
     overflow: visible;
 
+    .bingo-cell {
+        animation-name: intro-animation;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in-out;
+        animation-delay: calc((var(--cell-row) + 1) * 0.1s);
+    }
+
     &.has-bingo {
         .bingo-cell {
-            animation-name: wave-animation;
+            animation-name: bingo-animation;
             animation-duration: 0.5s;
             animation-timing-function: ease-in-out;
-            animation-fill-mode: both; /* Maintain the final state after the animation completes */
             animation-delay: calc(var(--cell-index) * 0.1s);
         }
     }
@@ -58,7 +75,6 @@
 
     border-radius: 8px; // Adjust as needed for the desired roundness
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
-      
 
     &.checked {
         background: linear-gradient(to bottom right, #a4d4ae, #d9ead3); /* From a soft green to a lighter green */
@@ -77,7 +93,7 @@
         z-index: 10;
 
         /* Assuming there are 5 columns, adjust if there are more or fewer */
-        &:nth-child(5n+1) {
+        &:nth-child(5n + 1) {
             /* first column, anchor transform to the right */
             transform-origin: center left;
         }

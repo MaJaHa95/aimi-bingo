@@ -126,6 +126,10 @@ export class BingoBoardComponent implements OnDestroy {
     return this.touchingSubject.asObservable().pipe(switchMap(c => !c ? of(false) : cell.previewing$));
   }
 
+  floor(num: number) {
+    return Math.floor(num);
+  }
+
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
