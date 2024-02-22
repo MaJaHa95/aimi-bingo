@@ -1,5 +1,6 @@
 <div class="header">
-    <ng-container *ngIf="previewCell$ | async as previewCell; else noPreviewTile">
+    <div class="header-content preview-cell-header" *ngIf="previewCell$ | async as previewCell; else noPreviewTile"
+        [class.checked]="previewCell.cell.checked$ | async">
         <div class="preview-icon-container" style="flex-shrink: 0;">
             <div class="preview-icon">
                 <i [class]="previewCell.cell.tile.icon"></i>
@@ -12,28 +13,31 @@
                 </h3>
                 <div>
                     <button class="select-button" type="button" (click)="toggleTile(previewCell.cell.tile)">
-                        <span *ngIf="previewCell.cell.checked$ | async; else unchecked">{{ previewCell.negation }}</span>
+                        <span *ngIf="previewCell.cell.checked$ | async; else unchecked">{{ previewCell.negation
+                            }}</span>
                         <ng-template #unchecked><span>{{ previewCell.affirmation }}</span></ng-template>
                     </button>
                 </div>
             </div>
         </div>
-    </ng-container>
+    </div>
 
     <ng-template #noPreviewTile>
-        <h3 class="intro-title" style="flex-grow: 1;">
-            <ng-container *ngIf="hasBingo$ | async as hasBingo; else noBingo">
-                Bingo!
-            </ng-container>
-            <ng-template #noBingo>
-                Let's play!
-            </ng-template>
-        </h3>
-        <div class="preview-logo-container">
-            <div class="preview-logo-text">
-                Sponsored by
+        <div class="header-content">
+            <h3 class="intro-title" style="flex-grow: 1;">
+                <ng-container *ngIf="hasBingo$ | async as hasBingo; else noBingo">
+                    Bingo!
+                </ng-container>
+                <ng-template #noBingo>
+                    Let's play!
+                </ng-template>
+            </h3>
+            <div class="preview-logo-container">
+                <div class="preview-logo-text">
+                    Sponsored by
+                </div>
+                <img src="assets/aimi-logo.png" alt="AIMI Logo" />
             </div>
-            <img src="assets/aimi-logo.png" alt="AIMI Logo" />
         </div>
     </ng-template>
 </div>

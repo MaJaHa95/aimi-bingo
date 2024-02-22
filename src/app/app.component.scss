@@ -1,13 +1,14 @@
 .header {
     height: 165px;
 
-    display: flex;
-    align-items: center;
+    .header-content {
+        display: flex;
+        align-items: center;
+    }
 
     .tile-title {
         font-size: 25px;
         flex-grow: 1;
-        color: #312a28;
         text-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
 
         margin: 0;
@@ -34,6 +35,8 @@
 
         font-size: 25px;
 
+        border: none;
+
         cursor: pointer;
 
         background: linear-gradient(to bottom right, #634579, #541981);
@@ -43,15 +46,32 @@
         box-shadow: 0px 0px 10px 0px rgb(0, 0, 0, 0.5);
     }
 
+    .preview-cell-header {
+        color: #312a28;
+
+        &.checked {
+            color: #004586;
+            
+            .preview-icon {
+                color: #004586;
+                text-shadow: 0 0 60px rgba(0, 69, 132, 0.25);
+            }
+        }
+
+        &:not(.checked) {
+            .preview-icon {
+                color: #584b45;
+                text-shadow: 0 0 60px rgba(80, 78, 74, 0.5);
+            }
+        }
+    }
+
     .preview-icon-container {
         position: relative;
 
         width: 150px;
         height: 100%;
         font-size: 75px;
-
-        text-shadow: 0 0 60px rgba(80, 78, 74, 0.5);
-        color: #584b45;
 
         .preview-icon {
             margin: 0;
