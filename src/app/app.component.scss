@@ -52,7 +52,7 @@
     .preview-logo-container {
         position: relative;
 
-        width: 30vw;
+        width: calc(var(--body-container-width) / 3);
 
         margin-right: 20px;
 
@@ -64,5 +64,13 @@
 
             font-size: 20px;
         }
+    }
+}
+
+
+.footer {
+    img {
+        max-height: 3em;
+        float: right;
     }
 }

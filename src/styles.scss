@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 * {
     font-family: sans-serif;
+
+    --body-container-width: min(100vw, 600px);
+}
+
+body {
+    padding: 20px max(0px, calc((100vw - var(--body-container-width)) / 2));
 }
