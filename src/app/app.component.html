@@ -2,18 +2,18 @@
     <ng-container *ngIf="previewCell$ | async as previewCell; else noPreviewTile">
         <div class="preview-icon-container" style="flex-shrink: 0;">
             <div class="preview-icon">
-                <i [class]="previewCell.tile.icon"></i>
+                <i [class]="previewCell.cell.tile.icon"></i>
             </div>
         </div>
         <div style="flex-grow: 1;">
             <div class="preview-content">
                 <h3 class="tile-title">
-                    {{ previewCell.tile.title }}
+                    {{ previewCell.cell.tile.title }}
                 </h3>
                 <div>
-                    <button class="select-button" type="button" (click)="toggleTile(previewCell.tile)">
-                        <span *ngIf="previewCell.checked$ | async; else unchecked">I haven't</span>
-                        <ng-template #unchecked><span>That's me!</span></ng-template>
+                    <button class="select-button" type="button" (click)="toggleTile(previewCell.cell.tile)">
+                        <span *ngIf="previewCell.cell.checked$ | async; else unchecked">{{ previewCell.negation }}</span>
+                        <ng-template #unchecked><span>{{ previewCell.affirmation }}</span></ng-template>
                     </button>
                 </div>
             </div>
