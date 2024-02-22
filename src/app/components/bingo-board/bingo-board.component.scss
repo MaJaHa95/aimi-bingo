@@ -59,11 +59,13 @@
 
     position: relative;
 
-    background: linear-gradient(to bottom right, #e6e6e6, #ffffff);
+    background: linear-gradient(
+        to bottom right,
+        #e3b6b2,
+        #EB1703);
     border: 2px solid #333;
     padding: 0;
     text-align: center;
-    cursor: pointer;
     transition:
         transform 0.3s ease,
         z-index 0s,
@@ -76,13 +78,34 @@
     border-radius: 8px; // Adjust as needed for the desired roundness
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
 
+    &.center-cell {
+        background: linear-gradient(
+            to bottom right,
+            #ffffff,
+            #cccccc);
+        color: #1a1a1a;
+        text-shadow: none;
+    }
+
+    &:not(.center-cell) {
+        cursor: pointer;
+        color: #e3e3e3;
+        text-shadow: 0 0 14px rgba(0, 0, 0, 0.5);    
+    }
+
     &.checked {
-        background: linear-gradient(to bottom right, #a4d4ae, #d9ead3); /* From a soft green to a lighter green */
+        background: linear-gradient(
+            to bottom right,
+            #0084fd,
+            #004686)
     }
 
     &:not(.checked) {
         &.preview {
-            background: linear-gradient(to bottom right, #a2c4c9, #eef7f9); /* From a light blue to a very pale blue */
+            background: linear-gradient(
+                to bottom right,
+                #68d2ff,
+                #57b3da);
         }
     }
 

@@ -6,9 +6,9 @@
 
     <div *ngFor="let cell of cells; let i = index" class="bingo-cell" [class.checked]="cell.checked$ | async"
         [class.preview]="cell.previewing$ | async" [class.magnify]="getShouldMagnifyObservable(cell) | async"
-        [style.--cell-index]="i" [style.--cell-row]="floor(i / columnCount)">
+        [style.--cell-index]="i" [style.--cell-row]="floor(i / columnCount)" [class.center-cell]="cell.type === 'bingo'">
         <div class="bingo-cell-content">
-            <div *ngIf="cell?.type === 'tile'; else bingoCell" class="bingo-tile">
+            <div *ngIf="cell.type === 'tile'; else bingoCell" class="bingo-tile">
                 <i [class]="cell?.tile?.icon"></i>
             </div>
 

@@ -30,6 +30,14 @@
         width: 100%;
 
         font-size: 25px;
+
+        cursor: pointer;
+
+        background: linear-gradient(to bottom right, #634579, #541981);
+        border-radius: 8px;
+        color: #f0f0f0;
+        text-shadow: 0 0 14px rgba(190, 190, 190, 0.5);
+        box-shadow: 0px 0px 10px 0px rgb(0, 0, 0, 0.5);
     }
 
     .preview-icon-container {
@@ -38,6 +46,9 @@
         width: 150px;
         height: 100%;
         font-size: 75px;
+
+        text-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+        color: #f0f0f0;
 
         .preview-icon {
             margin: 0;
@@ -66,7 +77,6 @@
         }
     }
 }
-
 
 .footer {
     img {
