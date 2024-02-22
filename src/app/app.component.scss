@@ -102,8 +102,17 @@
 }
 
 .footer {
-    img {
-        max-height: 3em;
-        float: right;
+    display: flex;
+    height: 3em;
+    
+    .reset-link {
+        flex-grow: 1;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 10px;
+
+        cursor: pointer;
+
+        color: #e9191e;
     }
 }

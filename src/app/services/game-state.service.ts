@@ -166,4 +166,15 @@ export class GameStateService {
     }
     this.checkedCellIdsSubject.next(newChecked);
   }
+
+  reset(confirm = true) {
+    if (confirm && this.checkedCellIdsSubject.value.length > 0) {
+      if (!window.confirm("Are you sure?")) {
+        return;
+      }
+    }
+
+    this.preview = null;
+    this.checkedCellIdsSubject.next([]);
+  }
 }

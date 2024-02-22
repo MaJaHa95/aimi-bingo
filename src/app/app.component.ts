@@ -79,4 +79,8 @@ export class AppComponent {
   toggleTile(tile: IBingoTile) {
     this.gameState.toggleTileChecked(tile);
   }
+
+  reset() {
+    this.gameState.reset();
+  }
 }
