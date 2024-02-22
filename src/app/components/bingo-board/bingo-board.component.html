@@ -4,8 +4,9 @@
     [class.has-bingo]="hasBingo$ | async"
     #container>
 
-    <div *ngFor="let cell of cells" class="bingo-cell" [class.checked]="cell.checked$ | async"
-        [class.preview]="cell.previewing$ | async" [class.magnify]="getShouldMagnifyObservable(cell) | async">
+    <div *ngFor="let cell of cells; let i = index" class="bingo-cell" [class.checked]="cell.checked$ | async"
+        [class.preview]="cell.previewing$ | async" [class.magnify]="getShouldMagnifyObservable(cell) | async"
+        [style.--cell-index]="i">
         <div class="bingo-cell-content">
             <div *ngIf="cell?.type === 'tile'; else bingoCell" class="bingo-tile">
                 <i [class]="cell?.tile?.icon"></i>
