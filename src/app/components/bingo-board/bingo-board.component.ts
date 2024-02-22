@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, combineLatest, fromEvent, map, merge, of, shareReplay, switchMap, takeUntil } from "rxjs";
+import { BehaviorSubject, Observable, Subject, fromEvent, map, merge, of, shareReplay, switchMap, takeUntil, withLatestFrom } from "rxjs";
 import { GameStateService, ICell } from "../../services/game-state.service";
 import { observeResizes } from "../../utilities/resize-observable";
 import { BingoCellComponent } from "../bingo-cell/bingo-cell.component";
@@ -43,7 +43,8 @@ export class BingoBoardComponent implements OnDestroy {
       })
     );
 
-    combineLatest([this.previewingCoordinateSubject.asObservable(), containerRect$]).pipe(
+    this.previewingCoordinateSubject.asObservable().pipe(
+      withLatestFrom(containerRect$),
       map(c => {
         const coordinate = c[0];
         const gridRect = c[1];

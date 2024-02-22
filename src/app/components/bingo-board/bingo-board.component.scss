@@ -105,7 +105,7 @@
     }
 
     img {
-        width: 15vw;
+        width: calc(0.15 * var(--body-container-width));
         object-fit: contain;
     }
 }
