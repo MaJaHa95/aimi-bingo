@@ -42,7 +42,7 @@
 
     position: relative;
 
-    background-color: #f0f0f0;
+    background: linear-gradient(to bottom right, #e6e6e6, #ffffff);
     border: 2px solid #333;
     padding: 0;
     text-align: center;
@@ -50,18 +50,23 @@
     transition:
         transform 0.3s ease,
         z-index 0s,
-        background-color 0.3s;
+        background-color 0.3s,
+        box-shadow 0.3s ease;
 
     margin: auto;
     text-align: center;
 
+    border-radius: 8px; // Adjust as needed for the desired roundness
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
+      
+
     &.checked {
-        background-color: #b2d8b8;
+        background: linear-gradient(to bottom right, #a4d4ae, #d9ead3); /* From a soft green to a lighter green */
     }
 
     &:not(.checked) {
         &.preview {
-            background-color: #ffcccc;
+            background: linear-gradient(to bottom right, #a2c4c9, #eef7f9); /* From a light blue to a very pale blue */
         }
     }
 

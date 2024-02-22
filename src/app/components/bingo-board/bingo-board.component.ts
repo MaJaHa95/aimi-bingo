@@ -66,10 +66,10 @@ export class BingoBoardComponent implements OnDestroy {
       }),
       takeUntil(this.destroy$)
     ).subscribe(c => {
-      this.gameState.previewTile.selected = c?.tile ?? null;
+      this.gameState.preview = c?.type === "tile" ? c : null;
     });
 
-    this.isPreviewing$ = this.gameState.previewTile.selected$.pipe(map(c => !!c));
+    this.isPreviewing$ = this.gameState.preview$.pipe(map(c => !!c));
   }
 
   @ViewChild("container")

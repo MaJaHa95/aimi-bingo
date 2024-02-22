@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Observable } from "rxjs";
 import { BingoBoardComponent } from "./components/bingo-board/bingo-board.component";
-import { GameStateService, IBingoTile } from "./services/game-state.service";
+import { GameStateService, IBingoTile, ITileCell } from "./services/game-state.service";
 
 @Component({
   selector: 'app-root',
@@ -13,10 +13,10 @@ import { GameStateService, IBingoTile } from "./services/game-state.service";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  readonly previewTile$: Observable<IBingoTile | null>;
+  readonly previewCell$: Observable<ITileCell | null>;
   readonly hasBingo$: Observable<boolean>;
   constructor(private readonly gameState: GameStateService) {
-    this.previewTile$ = gameState.previewTile.selected$;
+    this.previewCell$ = gameState.preview$;
     this.hasBingo$ = gameState.hasBingo$;
   }
 

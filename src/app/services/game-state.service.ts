@@ -56,11 +56,12 @@ const tiles: IBingoTile[] = [
   providedIn: 'root'
 })
 export class GameStateService {
-  readonly previewTile: ISelectableTile = new SelectableTile();
-
   readonly hasBingo$: Observable<boolean>;
 
   private readonly checkedCellIdsSubject = new BehaviorSubject<Symbol[]>([]);
+
+  private readonly previewSubject = new BehaviorSubject<ITileCell | null>(null);
+  readonly preview$ = this.previewSubject.asObservable();
 
   private readonly cells: ICell[];
   private readonly tileCellsByTitle: Map<string, ITileCell>;
@@ -69,7 +70,7 @@ export class GameStateService {
       const id = Symbol();
 
       const checked$ = this.checkedCellIdsSubject.asObservable().pipe(map(x => x.includes(id)));
-      const previewing$ = this.previewTile.selected$.pipe(map(c => c === tile));
+      const previewing$ = this.preview$.pipe(map(c => c?.tile === tile));
 
       return {
         id,
@@ -134,8 +135,15 @@ export class GameStateService {
     this.hasBingo$
       .pipe(distinctUntilChanged(), filter(c => !!c))
       .subscribe(c => {
-        this.previewTile.selected = null;
+        this.preview = null;
       })
+  }
+
+  set preview(val: ITileCell | null) {
+    this.previewSubject.next(val);
+  }
+  get preview() {
+    return this.previewSubject.value;
   }
 
   getCells() {
@@ -159,22 +167,3 @@ export class GameStateService {
     this.checkedCellIdsSubject.next(newChecked);
   }
 }
-
-export interface ISelectableTile {
-  selected: IBingoTile | null;
-  selected$: Observable<IBingoTile | null>;
-}
-
-class SelectableTile implements ISelectableTile {
-  private readonly selectedSubject = new BehaviorSubject<IBingoTile | null>(null);
-
-  readonly selected$ = this.selectedSubject.asObservable();
-
-  set selected(val: IBingoTile | null) {
-    this.selectedSubject.next(val);
-  }
-  get selected() {
-    return this.selectedSubject.value;
-  }
-}
-
