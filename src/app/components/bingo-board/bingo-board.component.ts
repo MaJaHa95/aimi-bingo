@@ -1,7 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, combineLatest, filter, map, of, shareReplay, switchMap, takeUntil } from "rxjs";
+import { BehaviorSubject, Observable, Subject, combineLatest, fromEvent, map, merge, of, shareReplay, switchMap, takeUntil } from "rxjs";
 import { GameStateService, ICell } from "../../services/game-state.service";
+import { observeResizes } from "../../utilities/resize-observable";
 import { BingoCellComponent } from "../bingo-cell/bingo-cell.component";
 
 
@@ -33,8 +34,9 @@ export class BingoBoardComponent implements OnDestroy {
     const rowCount = this.cells.length / this.columnCount;
 
     const containerRect$ = this.container$.asObservable().pipe(
-      map(c => c?.nativeElement.getBoundingClientRect()),
-      filter(c => !!c),
+      switchMap(c => !c ? of(null) : merge(fromEvent(window, "resize"), observeResizes(c.nativeElement)).pipe(
+        map(() => c.nativeElement.getBoundingClientRect()),
+      )),
       shareReplay({
         refCount: true,
         bufferSize: 1
